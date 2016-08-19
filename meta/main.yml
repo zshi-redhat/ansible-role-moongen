@@ -1,0 +1,13 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: zenghui.shi
+  description: MoonGen installation for RHEL
+  company: 'redhat'
+  license: 'license (BSD)'
+  min_ansible_version: 1.8
+  galaxy_tags:
+    - moongen
+    - install
+    - rhel

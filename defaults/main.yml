@@ -1,0 +1,11 @@
+---
+# git repo for moongen
+moongen_git_repo: "https://github.com/emmericp/MoonGen.git"
+
+# default moongen install directory
+moongen_dir: "/root/MoonGen/"
+
+# default build log file
+build_log: "/root/build.log"
+
+bind_interfaces_script: bind-interfaces.sh.j2

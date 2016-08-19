@@ -1,0 +1,33 @@
+---
+
+- name: Ensure build dependencies are installed
+  yum:
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+  with_items:
+    - { name: 'git' , state: 'installed' }
+    - { name: 'gcc' , state: 'installed' }
+    - { name: 'gcc-c++', state: 'installed' }
+    - { name: 'make', state: 'installed' }
+    - { name: 'cmake', state: 'installed' }
+    - { name: 'kernel-devel', state: 'installed' }
+    - { name: 'dpdk', state: 'installed' }
+    - { name: 'dpdk-tools', state: 'installed' }
+
+- name: Git clone moongen
+  git:
+    repo: "{{ moongen_git_repo }}"
+    dest: "{{ moongen_dir }}"
+    update: "yes"
+    clone: "yes"
+    force: "yes"
+
+- name: Replace bind-interfaces.sh file
+  template:
+    src: "{{ bind_interfaces_script }}"
+    dest: "{{ moongen_dir }}/bind-interfaces.sh"
+    force: yes
+    mode: a+x
+
+- name: Build moongen
+  shell: "{{ moongen_dir }}/build.sh >> {{ build_log }}"

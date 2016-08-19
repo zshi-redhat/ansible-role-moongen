@@ -1,0 +1,7 @@
+---
+
+# MoonGen binds non-active nics to dpdk by default
+# this parameter give user the flexibility to bind
+# random nics to dpdk after building MoonGen
+#
+bind_nics: ""
