@@ -31,3 +31,8 @@
 
 - name: Build moongen
   shell: "{{ moongen_dir }}/build.sh >> {{ build_log }}"
+
+- name: Configure dpdk-conf.lua file
+  template:
+    src: "{{ dpdk_conf_lua }}"
+    dest: "{{ moongen_dir }}/lua/dpdk-conf.lua"

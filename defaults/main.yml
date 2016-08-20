@@ -9,3 +9,4 @@ moongen_dir: "/root/MoonGen/"
 build_log: "/root/build.log"
 
 bind_interfaces_script: bind-interfaces.sh.j2
+dpdk_conf_lua: dpdk-conf.lua.j2

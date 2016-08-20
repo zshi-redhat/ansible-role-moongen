@@ -5,3 +5,34 @@
 # random nics to dpdk after building MoonGen
 #
 bind_nics: ""
+
+# configure the cores to use, either as a bitmask or as a list
+#
+# cpu_cores: "0,1,3,4"
+# cpu_cores: "0x0F"
+
+# the number of memory channels (defaults to auto-detect)
+#
+# memoryChannels: 2
+
+#  A string to be the prefix, corresponding to EAL argument "--file-prefix"
+#
+#  fileprefix: "m1"
+
+# A string to specify the socket memory allocation, corresponding to EAL argument "--socket-mem"
+#
+# socketmem: "2048,2048"
+
+# PCI black list to avoid resetting PCI device assigned to other DPDK apps.
+# Corresponding to ELA argument "--pci-blacklist"
+#
+# pciblack: ' "0000:81:00.3","0000:81:00.1" '
+
+# PCI white list to specify devices allocated to MoonGen.
+# Corresponding to ELA argument "--pci-whitelist" or "-w"
+#
+# pciwhite: ' "0000:81:00.3","0000:81:00.1" '
+
+# disable hugetlb, see DPDK documentation for more information
+#
+# noHugeTlbFs: true
