@@ -8,14 +8,14 @@ DPDKConfig {
 	-- configure the cores to use, either as a bitmask or as a list
 	-- default: all cores
 	--cores = 0x0F, -- use the first 4 cores
-    {% if cpu_cores == "" %}
+    {% if cpu_cores is not defined or cpu_cores == "" %}
 	--cores = {0, 1, 3, 4},
     {% else %}
     cores = { {{ cpu_cores }} },
     {% endif %}
 
 	-- the number of memory channels (defaults to auto-detect)
-    {% if memoryChannels == "" %}
+    {% if memoryChannels is not defined or memoryChannels == "" %}
 	--memoryChannels = 2,
     {% else %}
 	memoryChannels = {{ memoryChannels }},
@@ -26,14 +26,14 @@ DPDKConfig {
 	-- for more information.
 
 	-- a string to be the prefix, corresponding to EAL argument "--file-prefix"
-    {% if fileprefix == "" %}
+    {% if fileprefix is not defined or fileprefix == "" %}
 	--fileprefix = "m1",
     {% else %}
 	fileprefix = "{{ fileprefix }}",
     {% endif %}
 
 	-- A string to specify the socket memory allocation, corresponding to EAL argument "--socket-mem"
-    {% if socketmem == "" %}
+    {% if socketmem is not defined or socketmem == "" %}
 	--socketmem = "2048,2048",
     {% else %}
 	socketmem = "{{ socketmem }}",
@@ -41,7 +41,7 @@ DPDKConfig {
 	--
 	-- PCI black list to avoid resetting PCI device assigned to other DPDK apps.
 	-- Corresponding to ELA argument "--pci-blacklist"
-    {% if pciblack == "" %}
+    {% if pciblack is not defined or pciblack == "" %}
 	-- pciblack = {"0000:81:00.3","0000:81:00.1"},
     {% else %}
 	pciblack = { {{ pciblack }} },
@@ -49,14 +49,14 @@ DPDKConfig {
 
 	-- PCI white list to specify devices allocated to MoonGen.
 	-- Corresponding to ELA argument "--pci-whitelist" or "-w"
-    {% if pciwhite == "" %}
+    {% if pciwhite is not defined or pciwhite == "" %}
 	-- pciwhite = {"0000:81:00.3","0000:81:00.1"},
     {% else %}
 	pciwhite = { {{ pciwhite }} },
     {% endif %}
 
 	-- disable hugetlb, see DPDK documentation for more information
-    {% if noHugeTlbFs == "" %}
+    {% if noHugeTlbFs is not defined or noHugeTlbFs == "" %}
 	--noHugeTlbFs = true,
     {% else %}
 	noHugeTlbFs = {{ noHugeTlbFs }},
