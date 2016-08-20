@@ -11,8 +11,6 @@
     - { name: 'make', state: 'installed' }
     - { name: 'cmake', state: 'installed' }
     - { name: 'kernel-devel', state: 'installed' }
-    - { name: 'dpdk', state: 'installed' }
-    - { name: 'dpdk-tools', state: 'installed' }
 
 - name: Git clone moongen
   git:
