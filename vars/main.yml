@@ -6,6 +6,12 @@
 #
 bind_nics: ""
 
+# DPDK bind_nic_driver, default is igb_uio
+#
+# dpdk_module: "igb_uio"
+# dpdk_module: "vfio-pci"
+# dpdk_module: "uio_pci_generic"
+
 # configure the cores to use, either as a bitmask or as a list
 #
 # cpu_cores: "0,1,3,4"

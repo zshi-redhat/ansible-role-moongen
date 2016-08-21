@@ -4,14 +4,29 @@
 cd $(dirname "${BASH_SOURCE[0]}")
 cd deps/dpdk
 
+{% if dpdk_module is not defined or dpdk_module == 'igb_uio' %}
 modprobe uio
 (lsmod | grep igb_uio > /dev/null) || insmod ./x86_64-native-linuxapp-gcc/kmod/igb_uio.ko
+bind_driver=igb_uio
+{% elif dpdk_module == 'vfio-pci' or dpdk_module == 'vfio_pci' %}
+(lsmod | grep 'vfio-pci\|vfio_pci' > /dev/null) || modprobe vfio-pci
+bind_driver=vfio-pci
+{% elif dpdk_module == 'uio_pci_generic' %}
+(lsmod | grep uio_pci_generic > /dev/null) || modprobe uio_pci_generic
+bind_driver=uio_pci_generic
+{% else %}
+modprobe uio
+(lsmod | grep igb_uio > /dev/null) || insmod ./x86_64-native-linuxapp-gcc/kmod/igb_uio.ko
+bind_driver=igb_uio
+{% endif %}
+
+
 
 i=0
 for id in "{{ bind_nics }}"
 do
 	echo "Binding interface $id to DPDK"
-	tools/dpdk_nic_bind.py --bind=igb_uio $id
+	tools/dpdk_nic_bind.py --bind=$bind_driver $id
 	i=$(($i+1))
 done
 
