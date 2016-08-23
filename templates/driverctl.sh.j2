@@ -1,0 +1,14 @@
+#!/bin/bash
+
+(
+cd /root/
+git clone {{ driverctl_git_repo }}
+cd {{ driverctl_dir }}
+make install
+for id in "{{ bind_nics }}"
+do
+    echo "Setting interface $id to bind on boot"
+    driverctl set-override $id {{ dpdk_module }}
+done
+)
+

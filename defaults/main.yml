@@ -5,8 +5,15 @@ moongen_git_repo: "https://github.com/emmericp/MoonGen.git"
 # default moongen install directory
 moongen_dir: "/root/MoonGen/"
 
+# git repo for driverctl
+driverctl_git_repo: "http://laiskiainen.org/git/driverctl.git"
+
+# default driverctl install directory
+driverctl_dir: "/root/driverctl/"
+
 # default build log file
 build_log: "/root/build.log"
 
 bind_interfaces_script: bind-interfaces.sh.j2
 dpdk_conf_lua: dpdk-conf.lua.j2
+driverctl_script: driverctl.sh.j2

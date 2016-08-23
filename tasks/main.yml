@@ -43,3 +43,18 @@
     create: yes
   with_items:
     - { name: "{{ dpdk_module }}" }
+
+- name: Create driverctl.sh configuration file
+  template:
+    src: "{{ driverctl_script }}"
+    dest: "/root/driverctl.sh"
+
+- name: Set permission to driverctl.sh
+  file:
+    path: "{{ item.path }}"
+    mode: 0755
+  with_items:
+    - { path: '/root/driverctl.sh' }
+
+- name: Set nic to bind on boot
+  shell: "/root/driverctl.sh"
