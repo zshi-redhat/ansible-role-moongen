@@ -34,3 +34,12 @@
   template:
     src: "{{ dpdk_conf_lua }}"
     dest: "{{ moongen_dir }}/lua/dpdk-conf.lua"
+
+- name: Set dpdk module to load on boot
+  lineinfile:
+    dest: "/etc/modules-load.d/{{ item.name }}.conf"
+    regexp: "^{{ item.name }}"
+    line: "{{ item.name }}"
+    create: yes
+  with_items:
+    - { name: "{{ dpdk_module }}" }
