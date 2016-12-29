@@ -12,7 +12,7 @@ driverctl_git_repo: "http://laiskiainen.org/git/driverctl.git"
 driverctl_dir: "/root/driverctl/"
 
 # default build log file
-build_log: "/root/build.log"
+build_log: "/root/building.log"
 
 bind_interfaces_script: bind-interfaces.sh.j2
 dpdk_conf_lua: dpdk-conf.lua.j2
